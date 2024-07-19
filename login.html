@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Playfair+Display&family=Poppins:ital,wght@0,200;0,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/fav-icon.png" type="image/x-icon" />
+    <title>OTYHN Pharma - Login</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: poppins;
+        overflow: hidden;
+      }
+      body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      img {
+        width: 300px;
+        margin-bottom: 40px;
+      }
+      .login-pg-text {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+      h2 {
+        font-size: 1.9rem;
+      }
+      .initial-text {
+        font-size: 1.1rem;
+        margin: 0 auto;
+      }
+      input {
+        width: 560px;
+        height: 38px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        padding: 0 12px;
+        border: 1px solid #00a89d;
+        background-color: white;
+      }
+      input:focus {
+        outline: none;
+      }
+      #email-input {
+        margin: 0;
+      }
+      .valid-email {
+        font-size: 0.8rem;
+        color: red;
+      }
+      .input-text {
+        font-size: 0.8rem;
+        font-weight: 590;
+        margin-bottom: 4px;
+      }
+      #input-text {
+        margin-top: 20px;
+      }
+      .login-pg-btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .login-pg-btn p {
+        font-size: 0.9rem;
+      }
+      .login-pg-btn a {
+        text-decoration: none;
+        color: #00a89d;
+      }
+      .login-pg-btn a:hover {
+        color: #00847b;
+      }
+      .login-pg-btn button {
+        background-color: #c4c4c4;
+        color: white;
+        border: none;
+        padding: 14px 70px;
+        border-radius: 30px;
+        cursor: not-allowed;
+        transition: background-color 0.5s ease;
+      }
+      .ready-to-login {
+        background-color: #02988e !important;
+      }
+      .ready-to-login:hover {
+        background-color: #00847b !important;
+      }
+      .ready-to-login:active {
+        background-color: #00b9ac !important;
+      }
+      .allowed {
+        cursor: pointer !important;
+      }
+      @media (max-width: 700px) {
+        input {
+          width: 300px;
+        }
+        .login-pg-btn {
+          flex-direction: column;
+          margin: 0;
+        }
+        .login-pg-btn button {
+          padding: 8px 66px;
+          margin-top: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <img src="/Group 48.jpg" alt="login-page-logo" />
+      <div class="login-pg-text">
+        <h2>Welcome back</h2>
+        <p class="initial-text">Login to your account!</p>
+      </div>
+      <div class="login-pg-input">
+        <p class="input-text">Email address</p>
+        <input type="text" placeholder="Enter Email" id="email-input" />
+        <p class="valid-email"></p>
+        <p class="input-text" id="input-text">Password</p>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          id="password-input"
+        />
+      </div>
+      <div class="login-pg-btn">
+        <p>
+          Don't have an account? <a href="#" class="signup-here">Create one</a>
+        </p>
+        <button class="login-pg-login-btn">Login</button>
+      </div>
+    </section>
+  </body>
+  <script>
+    const loginPg_LoginBtn = document.querySelector(".login-pg-login-btn");
+    const emailInput = document.querySelector("#email-input");
+    const passwordInput = document.querySelector("#password-input");
+    const validEmail = document.querySelector(".valid-email");
+    const signupHere = document.querySelector(".signup-here");
+
+    function checkEmailAddress() {
+      if (emailInput.value.includes("@") && emailInput.value.includes(".com")) {
+        validEmail.textContent = "";
+      } else {
+        validEmail.textContent = "Enter a valid email address please";
+      }
+    }
+    function checkInputs() {
+      const emailValue = emailInput.value.trim();
+      const passwordValue = passwordInput.value.trim();
+      if (
+        emailValue !== "" &&
+        passwordValue !== "" &&
+        emailValue.includes("@") &&
+        emailValue.includes(".com")
+      ) {
+        loginPg_LoginBtn.classList.add("ready-to-login");
+        loginPg_LoginBtn.classList.add("allowed");
+        loginPg_LoginBtn.addEventListener("click", function () {
+          location.reload();
+        });
+      } else {
+        loginPg_LoginBtn.classList.remove("ready-to-login");
+      }
+      checkEmailAddress();
+    }
+
+    emailInput.addEventListener("input", checkInputs);
+    passwordInput.addEventListener("input", checkInputs);
+
+    signupHere.addEventListener("click", function () {
+      window.location.href = "signup.html";
+    });
+  </script>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Playfair+Display&family=Poppins:ital,wght@0,200;0,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/fav-icon.png" type="image/x-icon" />
+    <title>OTYHN Pharma - Sign Up</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: poppins;
+        overflow: hidden;
+      }
+      body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+      }
+        section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        img {
+          width: 300px;
+          margin-bottom: 14px;
+        }
+        .singup-text-wraper {
+          display: flex;
+          flex-direction: column;
+          margin-top: 40px;
+        }
+        .input-labels {
+          font-size: 0.8rem;
+        }
+        .singup-text-wraper input {
+          margin-bottom: 20px;
+          width: 600px;
+          height: 40px;
+          border-radius: 8px;
+          padding: 0 12px;
+          border: 1px solid #00a89d;
+          background-color: white;
+        }
+        .singup-text-wraper input:focus {
+          outline: none;
+        }
+        .signup-name {
+          display: flex;
+          justify-content: space-between;
+        }
+        .signup-name input
+        {
+          width: 294px;
+        }
+        .signup-pg-btns{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 600px;
+          margin-top: 20px;
+        }
+        .singup-pg-signup-btn{
+          padding: 12px 60px;
+          border: none;
+          border-radius: 40px;
+          background-color: #c4c4c4;
+          color: white;
+          font-weight: bold;
+          letter-spacing: 1px;
+          cursor: not-allowed;
+          transition: background-color 0.5s ease;
+
+        }
+        .login-here{
+          color: #00a89d;
+          cursor: pointer;
+        }
+        .login-here:hover{
+          color: #008a7e;
+        }
+        .ready-to-signup {
+          background-color: #02988e !important;
+        }
+        .ready-to-signup:hover {
+          background-color: #00847b !important;
+        }
+        .ready-to-signup:active {
+          background-color: #00b9ac !important;
+        }
+        .allowed {
+          cursor: pointer !important;
+        }
+      @media (max-width: 700px) {
+        .singup-text-wraper input {
+          width: 300px;
+        }
+        .signup-name input{
+          width: 146px;
+        }
+        .signup-pg-btns {
+          flex-direction: column;
+          margin: 0;
+        }
+        .signup-pg-btns button {
+          padding: 8px 66px;
+          margin-top: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <img src="/Group 48.jpg" alt="singup-pg-logo" />
+      <p class="initial-text">Creat an account to continue</p>
+
+      <div class="singup-text-wraper">
+        <div class="signup-name">
+          <span>
+          <p class="input-labels">First Name</p>
+          <input type="text" placeholder="Enter First Name" id="firstName-input"/>
+        </span>
+        <span>
+          <p class="input-labels">Last Name</p>
+          <input type="text" placeholder="Enter Last Name" id="lastName-input"/>
+        </div>
+      </span>
+        <p class="input-labels">Email Address</p>
+        <input type="text" placeholder="Enter Email Address" id="email-input"/>
+
+        <p class="input-labels">Phone Number</p>
+        <input type="number" placeholder="Enter Phone Number" id="phoneNumber-input"/>
+
+        <p class="input-labels">Password</p>
+        <input type="password" placeholder="Enter Password" id="password-input"/>
+      </div>
+      <div class="signup-pg-btns">
+        <p>Already have an account? <span class="login-here">Login</span></p>
+        <button class="singup-pg-signup-btn">Sign Up</button>
+      </div>
+    </section>
+  </body>
+  <script>
+    const loginHere = document.querySelector('.login-here')
+    const signupPage_signupBtn = document.querySelector('.singup-pg-signup-btn')
+    const allInputs = document.querySelectorAll('input')
+
+    function checkSignupInputs() {
+  const firstNameValue = document.querySelector('#firstName-input').value.trim();
+  const lastNameValue = document.querySelector('#lastName-input').value.trim();
+  const emailValue = document.querySelector('#email-input').value.trim();
+  const phoneValue = document.querySelector('#phoneNumber-input').value.trim();
+  const passwordValue = document.querySelector('#password-input').value.trim();
+
+  if (firstNameValue && lastNameValue && emailValue && phoneValue && passwordValue) {
+    signupPage_signupBtn.classList.add('ready-to-signup');
+    signupPage_signupBtn.classList.add('allowed');
+    signupPage_signupBtn.addEventListener('click', function(){
+      location.reload()
+    })
+  } else {
+    signupPage_signupBtn.classList.remove('ready-to-signup');
+    signupPage_signupBtn.classList.remove('allowed');
+  }
+}
+
+    allInputs.forEach(function(btn){
+      btn.addEventListener('input', checkSignupInputs)
+    })
+
+    loginHere.addEventListener('click', function(){
+  window.location.href = 'login.html';
+    })
+
+  </script>
+</html>
+
